@@ -9,12 +9,14 @@
     <h1>Valor de la variable de entorno 'clave':</h1>
     <div id="clave-value"></div>
 
-    <script>
-        // Acceder a la variable de entorno 'clave' definida en Netlify
-        const valorClave = process.env.CLAVE; // Netlify convierte las variables de entorno a mayúsculas
+   <script>
+    // Exponer la variable de entorno 'clave' en el HTML
+    var clave = '<%= process.env.CLAVE %>';
 
-        // Mostrar el valor en un elemento HTML
-        document.getElementById('clave-value').textContent = valorClave;
+    // Mostrar el valor en un elemento HTML
+    document.getElementById('clave-value').textContent = clave;
+</script>
+
     </script>
 </body>
 </html>
