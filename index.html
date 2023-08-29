@@ -7,17 +7,11 @@
 </head>
 <body>
     <h1>Valor de la variable de entorno 'clave':</h1>
-    <div id="clave-value"></div>
+    <div id="clave-value">Cargando...</div>
 
-   <script>
-    // Exponer la variable de entorno 'clave' en el HTML
-    var clave = '<%= process.env.CLAVE %>';
-
-    // Mostrar el valor en un elemento HTML
-    document.getElementById('clave-value').textContent = clave;
-</script>
-
-    </script>
+    <!-- Agrega el script de environment.js para obtener el valor -->
+    <script src="/js/environment.js"></script>
 </body>
 </html>
+
 
