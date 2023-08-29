@@ -1,8 +1,21 @@
-<html>
-  <head>
-    <title>Que</title>
-  </head>
-  <body>
-    <p>Hola</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página con Variable de Entorno</title>
+</head>
+<body>
+    <h1>Valor de la variable de entorno 'clave':</h1>
+    <div id="clave-value"></div>
+
+    <script>
+        // Acceder a la variable de entorno 'clave' definida en Netlify
+        const valorClave = process.env.CLAVE; // Netlify convierte las variables de entorno a mayúsculas
+
+        // Mostrar el valor en un elemento HTML
+        document.getElementById('clave-value').textContent = valorClave;
+    </script>
+</body>
 </html>
+
