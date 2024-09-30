@@ -18,7 +18,10 @@
 
     <script>
         let intervalId; // Para almacenar el identificador del intervalo
-        let totalAcumulado = 0; // Variable para acumular el total
+        let totalAcumulado = parseInt(localStorage.getItem('totalAcumulado')) || 0; // Recuperar el total acumulado del localStorage
+
+        // Mostrar el total acumulado al cargar la página
+        document.getElementById('acumulador-value').innerText = `Total acumulado: ${totalAcumulado}`;
 
         // Llamar a la función serverless para generar un número entre 7 y 9
         const fetchAcumulador = () => {
@@ -32,6 +35,8 @@
                 .then(data => {
                     // Sumar el número generado al total acumulado
                     totalAcumulado += data.number;
+                    // Almacenar el nuevo total acumulado en localStorage
+                    localStorage.setItem('totalAcumulado', totalAcumulado);
                     // Mostrar el total acumulado en la página
                     document.getElementById('acumulador-value').innerText = `Total acumulado: ${totalAcumulado}`;
                 })
@@ -51,5 +56,3 @@
     </script>
 </body>
 </html>
-
-
