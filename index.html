@@ -18,6 +18,7 @@
 
     <script>
         let intervalId; // Para almacenar el identificador del intervalo
+        let totalAcumulado = 0; // Variable para acumular el total
 
         // Llamar a la función serverless para generar un número entre 7 y 9
         const fetchAcumulador = () => {
@@ -29,8 +30,10 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Mostrar el número generado por la función en la página
-                    document.getElementById('acumulador-value').innerText = `Total acumulado: ${data.number}`;
+                    // Sumar el número generado al total acumulado
+                    totalAcumulado += data.number;
+                    // Mostrar el total acumulado en la página
+                    document.getElementById('acumulador-value').innerText = `Total acumulado: ${totalAcumulado}`;
                 })
                 .catch(error => {
                     console.error('Error al llamar a la función serverless:', error);
@@ -48,4 +51,5 @@
     </script>
 </body>
 </html>
+
 
