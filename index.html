@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página con Variable de Entorno</title>
+    <title>Mi Página con Acumulador</title>
 </head>
 <body>
     <h1>¿Quién te llama?</h1>
-    <div id="clave-value">Cargando...</div>
+    
+    <div id="clave-value">Cargando valor desde environment.js...</div>
+    <div id="acumulador-value">Total acumulado: Cargando...</div>
 
     <!-- Agrega el script de environment.js para obtener el valor -->
     <script src="/js/environment.js"></script>
+
+    <script>
+        // Llamar a la función serverless para generar un número entre 7 y 9
+        const fetchAcumulador = () => {
+            fetch('/.netlify/functions/accumulator')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la red: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Mostrar el número generado por la función en la página
+                    document.getElementById('acumulador-value').innerText = `Total acumulado: ${data.number}`;
+                })
+                .catch(error => {
+                    console.error('Error al llamar a la función serverless:', error);
+                    document.getElementById('acumulador-value').innerText = 'Error al obtener el acumulador';
+                });
+        };
+
+        // Llama a la función para obtener el acumulador al cargar la página
+        window.onload = () => {
+            fetchAcumulador();
+        };
+    </script>
 </body>
 </html>
